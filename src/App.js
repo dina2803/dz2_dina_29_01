@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Switcher extends Component {
+    constructor() {
+        super()
+        this.state = {
+            color1: "darkred",
+            color2: "darkblue",
+        }
+    }
+
+    swapColors = () => {
+        const { color1, color2 } = this.state;
+        this.setState({
+            color1: color2,
+            color2: color1,
+        })
+    }
+
+    render() {
+        const { color1, color2 } = this.state
+        return (
+            <div>
+                <div
+                    style={{ width: "250px", height: "250px", backgroundColor: color1, display: "inline-block"}}
+                    onClick={this.swapColors}
+                ></div>
+                <div
+                    style={{ width: "250px", height: "250px", backgroundColor: color2, display: "inline-block"}}
+                    onClick={this.swapColors}
+                ></div>
+            </div>
+        )
+    }
 }
 
-export default App;
+export default Switcher;
